@@ -8,7 +8,6 @@ This guide explains how to use `fcs_batch_export.py` to convert `.fcs` files int
 
 Organize your FCS files in a main folder, with or without subfolders, for example:
 
-```text
 D:/Data/FCS_Exports/
     2022-11-17/
         sample_1.fcs
@@ -17,7 +16,7 @@ D:/Data/FCS_Exports/
         sample_3.fcs
 The script will search recursively, so all subfolders are processed.
 
-2. Install Python and dependencies
+## 2. Install Python and dependencies
 Make sure you have:
 
 Python 3.8+
@@ -31,7 +30,8 @@ Install the required packages, for example:
 bash
 Copy code
 pip install pandas FlowCytometryTools
-3. Place the script
+
+## 3. Place the script
 Put fcs_batch_export.py somewhere convenient, e.g.:
 
 text
@@ -44,10 +44,11 @@ Open fcs_batch_export.py in your editor and adjust the user settings at the top:
 
 python
 Copy code
-# Main directory containing your .fcs files
+
+## Main directory containing your .fcs files
 main_directory = r"D:\Data\FCS_Exports"
 
-# Export mode: "txt", "csv", or "csv_summary"
+## Export mode: "txt", "csv", or "csv_summary"
 EXPORT_MODE = "csv_summary"
 Export modes
 txt
@@ -71,7 +72,7 @@ combined_fsc_a.csv
 combined_ssc_a.csv
 These contain one column per file (filename without extension) and one row per event.
 
-5. Run the script
+## 5. Run the script
 Open a terminal / command prompt in the folder where fcs_batch_export.py is located, then run:
 
 bash
@@ -100,7 +101,8 @@ Copy code
 [INFO] Processing directory: D:\Data\FCS_Exports\2022-11-17
 [INFO] Saved: D:\Data\FCS_Exports\2022-11-17_converted_to_csv\sample_1.csv
 [INFO] Saved summary: D:\Data\FCS_Exports\2022-11-17\combined_fsc_a.csv
-6. Inspect the results
+
+## 6. Inspect the results
 Open the generated files in your tool of choice:
 
 Excel / LibreOffice Calc
@@ -112,11 +114,9 @@ GraphPad, Prism, etc.
 The per-file exports contain the full event table for each sample.
 The summary files (combined_fsc_a.csv, combined_ssc_a.csv) are convenient for quick comparisons across samples.
 
-7. Notes and troubleshooting
+## 7. Notes and troubleshooting
 If a folder has no .fcs files, it is simply skipped.
 
 If a file doesn’t contain FSC-A or SSC-A, that file is omitted from the corresponding summary table.
 
 The script does not perform gating, compensation, or transformations. It exports exactly what FlowCytometryTools reads from the .fcs files.
-
-If you need the script to summarize additional channels (e.g. GFP-A, mCherry-A), you ca
