@@ -1,19 +1,26 @@
-# FACS-Data-Export-Pipeline
-A Python tool for batch-converting FCS flow cytometry files into TXT or CSV. Supports recursive folder processing and an optional summary mode that generates combined FSC-A and SSC-A tables for quick comparison across samples.
+# FCS Batch Export
+
+A small Python tool to batch-convert Flow Cytometry Standard (`.fcs`) files into TXT or CSV, with an optional summary mode that aggregates FSC-A and SSC-A across all files in each folder.
+
+The script recursively scans a root directory, processes all `.fcs` files it finds, and saves the exports into dedicated output folders next to the original data.
+
+---
 
 ## Features
 
-- 🔍 Recursively walks through a root folder and its subfolders
-- 📄 Per-file export of full event tables to:
+- 🔁 Recursively process all `.fcs` files in a folder tree  
+- 📄 Export full event tables to:
   - Tab-separated `.txt`, or
   - Comma-separated `.csv`
 - 📊 Optional summary mode:
   - One `.csv` per `.fcs` file
-  - Plus per-folder summary tables:
-    - `combined_fsc_a.csv` (columns = files, rows = events for FSC-A)
-    - `combined_ssc_a.csv` (columns = files, rows = events for SSC-A)
+  - Plus per-folder summary files:
+    - `combined_fsc_a.csv`
+    - `combined_ssc_a.csv`
 
-This is useful if you want quick access to raw FCS data in Excel, R, Python, or GraphPad, and/or perform simple comparisons across samples using FSC-A and SSC-A.
+These summaries have one column per file (column name = filename without extension) and one row per event.
+
+---
 
 ## Requirements
 
